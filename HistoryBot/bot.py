@@ -1,5 +1,5 @@
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 from pathlib import Path
 import json
 
@@ -20,6 +20,11 @@ async def on_ready():
     print('')
     print('If you find any bugs please report to:\n- https://github.com/CrumblyLiquid/Mics-Bots/tree/master/HistoryBot\n- crumblyliquid@gmail.com')
     print('')
+
+@tasks.loop(hours=24, reconnect=True)
+async def tdih():
+    # Get what happened this day in history
+    pass
 
 
 client.run(getConfig('token'), reconnect=True)
